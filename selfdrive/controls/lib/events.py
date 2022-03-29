@@ -361,7 +361,7 @@ EVENTS: Dict[int, Dict[str, Union[Alert, AlertCallbackType]]] = {
     ET.PRE_ENABLE: Alert(
       "Release Gas Pedal to Engage",
       "",
-      AlertStatus.override, AlertSize.small,
+      AlertStatus.normal, AlertSize.small,
       Priority.LOWEST, VisualAlert.none, AudibleAlert.none, .1, creation_delay=1.),
   },
 
