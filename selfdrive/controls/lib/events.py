@@ -365,7 +365,7 @@ EVENTS: Dict[int, Dict[str, Union[Alert, AlertCallbackType]]] = {
       Priority.LOWEST, VisualAlert.none, AudibleAlert.none, .1, creation_delay=1.),
   },
 
-  EventName.gasPressedPreEnable: {
+  EventName.gasPressedOverride: {
     ET.OVERRIDE: Alert(
       "",
       "",
