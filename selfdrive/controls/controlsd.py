@@ -199,9 +199,6 @@ class Controls:
       (CS.brakePressed and (not self.CS_prev.brakePressed or not CS.standstill)):
       self.events.add(EventName.pedalPressed)
 
-    if CS.gasPressed:
-      self.events.add(EventName.pedalPressedPreEnable)
-
     self.events.add_from_msg(CS.events)
     self.events.add_from_msg(self.sm['driverMonitoringState'].events)
 
