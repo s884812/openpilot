@@ -199,6 +199,9 @@ class Controls:
       (CS.brakePressed and (not self.CS_prev.brakePressed or not CS.standstill)):
       self.events.add(EventName.pedalPressed)
 
+    if CS.gasPressed:
+      self.events.add(EventName.pedalPressedPreEnable)
+
     self.events.add_from_msg(CS.events)
     self.events.add_from_msg(self.sm['driverMonitoringState'].events)
 
@@ -505,7 +508,7 @@ class Controls:
     # Check which actuators can be enabled
     CC.latActive = self.active and not CS.steerFaultTemporary and not CS.steerFaultPermanent and \
                      CS.vEgo > self.CP.minSteerSpeed and not CS.standstill
-    CC.longActive = self.active
+    CC.longActive = self.active and not self.state == State.overriding
 
     actuators = CC.actuators
     actuators.longControlState = self.LoC.long_control_state

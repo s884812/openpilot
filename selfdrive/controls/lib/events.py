@@ -357,22 +357,6 @@ EVENTS: Dict[int, Dict[str, Union[Alert, AlertCallbackType]]] = {
 
   # ********** events only containing alerts that display while engaged **********
 
-  EventName.gasPressedPreEnable: {
-    ET.PRE_ENABLE: Alert(
-      "Release Gas Pedal to Engage",
-      "",
-      AlertStatus.normal, AlertSize.small,
-      Priority.LOWEST, VisualAlert.none, AudibleAlert.none, .1, creation_delay=1.),
-  },
-
-  EventName.gasPressedOverride: {
-    ET.OVERRIDE: Alert(
-      "",
-      "",
-      AlertStatus.normal, AlertSize.none,
-      Priority.LOWEST, VisualAlert.none, AudibleAlert.none, .1),
-  },
-
   # openpilot tries to learn certain parameters about your car by observing
   # how the car behaves to steering inputs from both human and openpilot driving.
   # This includes:
@@ -556,6 +540,22 @@ EVENTS: Dict[int, Dict[str, Union[Alert, AlertCallbackType]]] = {
     ET.USER_DISABLE: EngagementAlert(AudibleAlert.disengage),
     ET.NO_ENTRY: NoEntryAlert("Pedal Pressed",
                               visual_alert=VisualAlert.brakePressed),
+  },
+
+  EventName.pedalPressedPreEnable: {
+    ET.PRE_ENABLE: Alert(
+      "Release Pedal to Engage",
+      "",
+      AlertStatus.normal, AlertSize.small,
+      Priority.LOWEST, VisualAlert.none, AudibleAlert.none, .1, creation_delay=1.),  # FIXME: is creation_delay broken?
+  },
+
+  EventName.gasPressedOverride: {
+    ET.OVERRIDE: Alert(
+      "",
+      "",
+      AlertStatus.normal, AlertSize.none,
+      Priority.LOWEST, VisualAlert.none, AudibleAlert.none, .1),
   },
 
   EventName.wrongCarMode: {
